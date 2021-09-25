@@ -11,8 +11,8 @@ export default function Home() {
       </Typography>
       <div className="max-w-5xl mx-auto my-10">
         <Grid component="ul" container spacing={2}>
-          {documentationList.map((doc) => (
-            <Grid component="li" item className="" xs={6}>
+          {documentationList.map((doc, i) => (
+            <Grid component="li" key={`doc-${i}`} item className="" xs={6}>
               <a
                 href={doc.link}
                 target="_blank"

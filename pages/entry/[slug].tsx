@@ -1,3 +1,5 @@
+import fs from 'fs'
+import path from 'path'
 import { GetStaticProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { getPlant, getPlantList, getCategoryList } from '@api'
@@ -24,12 +26,14 @@ type PathType = {
 }
 
 export const getStaticPaths = async () => {
-  const entries = await getPlantList({ limit: 10 })
+  const slugs = fs
+    .readFileSync(path.join(process.cwd(), 'paths.txt'), 'utf-8')
+    .toString()
+    .split('\n')
+    .filter(Boolean)
 
-  const paths: PathType[] = entries.map((plant) => ({
-    params: {
-      slug: plant.slug,
-    },
+  const paths: PathType[] = slugs.map((slug) => ({
+    params: { slug },
   }))
 
   return {

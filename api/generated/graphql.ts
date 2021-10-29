@@ -32,23 +32,17 @@ export type Scalars = {
 /** Represents a binary file in a space. An asset can be any file type. */
 export type IAsset = {
   __typename?: 'Asset';
-  sys: ISys;
-  contentfulMetadata: IContentfulMetadata;
-  title?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
   contentType?: Maybe<Scalars['String']>;
+  contentfulMetadata: IContentfulMetadata;
+  description?: Maybe<Scalars['String']>;
   fileName?: Maybe<Scalars['String']>;
-  size?: Maybe<Scalars['Int']>;
-  url?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['Int']>;
   height?: Maybe<Scalars['Int']>;
   linkedFrom?: Maybe<IAssetLinkingCollections>;
-};
-
-
-/** Represents a binary file in a space. An asset can be any file type. */
-export type IAssetUrlArgs = {
-  transform?: Maybe<IImageTransformOptions>;
+  size?: Maybe<Scalars['Int']>;
+  sys: ISys;
+  title?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+  width?: Maybe<Scalars['Int']>;
 };
 
 
@@ -57,252 +51,258 @@ export type IAssetLinkedFromArgs = {
   allowedLocales?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
+
+/** Represents a binary file in a space. An asset can be any file type. */
+export type IAssetUrlArgs = {
+  transform?: Maybe<IImageTransformOptions>;
+};
+
 export type IAssetCollection = {
   __typename?: 'AssetCollection';
-  total: Scalars['Int'];
-  skip: Scalars['Int'];
-  limit: Scalars['Int'];
   items: Array<Maybe<IAsset>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
 };
 
 export type IAssetFilter = {
-  sys?: Maybe<ISysFilter>;
-  contentfulMetadata?: Maybe<IContentfulMetadataFilter>;
-  title_exists?: Maybe<Scalars['Boolean']>;
-  title?: Maybe<Scalars['String']>;
-  title_not?: Maybe<Scalars['String']>;
-  title_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  title_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  title_contains?: Maybe<Scalars['String']>;
-  title_not_contains?: Maybe<Scalars['String']>;
-  description_exists?: Maybe<Scalars['Boolean']>;
-  description?: Maybe<Scalars['String']>;
-  description_not?: Maybe<Scalars['String']>;
-  description_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  description_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  description_contains?: Maybe<Scalars['String']>;
-  description_not_contains?: Maybe<Scalars['String']>;
-  url_exists?: Maybe<Scalars['Boolean']>;
-  url?: Maybe<Scalars['String']>;
-  url_not?: Maybe<Scalars['String']>;
-  url_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  url_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  url_contains?: Maybe<Scalars['String']>;
-  url_not_contains?: Maybe<Scalars['String']>;
-  size_exists?: Maybe<Scalars['Boolean']>;
-  size?: Maybe<Scalars['Int']>;
-  size_not?: Maybe<Scalars['Int']>;
-  size_in?: Maybe<Array<Maybe<Scalars['Int']>>>;
-  size_not_in?: Maybe<Array<Maybe<Scalars['Int']>>>;
-  size_gt?: Maybe<Scalars['Int']>;
-  size_gte?: Maybe<Scalars['Int']>;
-  size_lt?: Maybe<Scalars['Int']>;
-  size_lte?: Maybe<Scalars['Int']>;
-  contentType_exists?: Maybe<Scalars['Boolean']>;
+  AND?: Maybe<Array<Maybe<IAssetFilter>>>;
+  OR?: Maybe<Array<Maybe<IAssetFilter>>>;
   contentType?: Maybe<Scalars['String']>;
-  contentType_not?: Maybe<Scalars['String']>;
-  contentType_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  contentType_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
   contentType_contains?: Maybe<Scalars['String']>;
+  contentType_exists?: Maybe<Scalars['Boolean']>;
+  contentType_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  contentType_not?: Maybe<Scalars['String']>;
   contentType_not_contains?: Maybe<Scalars['String']>;
-  fileName_exists?: Maybe<Scalars['Boolean']>;
+  contentType_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  contentfulMetadata?: Maybe<IContentfulMetadataFilter>;
+  description?: Maybe<Scalars['String']>;
+  description_contains?: Maybe<Scalars['String']>;
+  description_exists?: Maybe<Scalars['Boolean']>;
+  description_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  description_not?: Maybe<Scalars['String']>;
+  description_not_contains?: Maybe<Scalars['String']>;
+  description_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
   fileName?: Maybe<Scalars['String']>;
-  fileName_not?: Maybe<Scalars['String']>;
-  fileName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  fileName_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
   fileName_contains?: Maybe<Scalars['String']>;
+  fileName_exists?: Maybe<Scalars['Boolean']>;
+  fileName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  fileName_not?: Maybe<Scalars['String']>;
   fileName_not_contains?: Maybe<Scalars['String']>;
-  width_exists?: Maybe<Scalars['Boolean']>;
-  width?: Maybe<Scalars['Int']>;
-  width_not?: Maybe<Scalars['Int']>;
-  width_in?: Maybe<Array<Maybe<Scalars['Int']>>>;
-  width_not_in?: Maybe<Array<Maybe<Scalars['Int']>>>;
-  width_gt?: Maybe<Scalars['Int']>;
-  width_gte?: Maybe<Scalars['Int']>;
-  width_lt?: Maybe<Scalars['Int']>;
-  width_lte?: Maybe<Scalars['Int']>;
-  height_exists?: Maybe<Scalars['Boolean']>;
+  fileName_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
   height?: Maybe<Scalars['Int']>;
-  height_not?: Maybe<Scalars['Int']>;
-  height_in?: Maybe<Array<Maybe<Scalars['Int']>>>;
-  height_not_in?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  height_exists?: Maybe<Scalars['Boolean']>;
   height_gt?: Maybe<Scalars['Int']>;
   height_gte?: Maybe<Scalars['Int']>;
+  height_in?: Maybe<Array<Maybe<Scalars['Int']>>>;
   height_lt?: Maybe<Scalars['Int']>;
   height_lte?: Maybe<Scalars['Int']>;
-  OR?: Maybe<Array<Maybe<IAssetFilter>>>;
-  AND?: Maybe<Array<Maybe<IAssetFilter>>>;
+  height_not?: Maybe<Scalars['Int']>;
+  height_not_in?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  size?: Maybe<Scalars['Int']>;
+  size_exists?: Maybe<Scalars['Boolean']>;
+  size_gt?: Maybe<Scalars['Int']>;
+  size_gte?: Maybe<Scalars['Int']>;
+  size_in?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  size_lt?: Maybe<Scalars['Int']>;
+  size_lte?: Maybe<Scalars['Int']>;
+  size_not?: Maybe<Scalars['Int']>;
+  size_not_in?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  sys?: Maybe<ISysFilter>;
+  title?: Maybe<Scalars['String']>;
+  title_contains?: Maybe<Scalars['String']>;
+  title_exists?: Maybe<Scalars['Boolean']>;
+  title_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  title_not?: Maybe<Scalars['String']>;
+  title_not_contains?: Maybe<Scalars['String']>;
+  title_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  url?: Maybe<Scalars['String']>;
+  url_contains?: Maybe<Scalars['String']>;
+  url_exists?: Maybe<Scalars['Boolean']>;
+  url_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  url_not?: Maybe<Scalars['String']>;
+  url_not_contains?: Maybe<Scalars['String']>;
+  url_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  width?: Maybe<Scalars['Int']>;
+  width_exists?: Maybe<Scalars['Boolean']>;
+  width_gt?: Maybe<Scalars['Int']>;
+  width_gte?: Maybe<Scalars['Int']>;
+  width_in?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  width_lt?: Maybe<Scalars['Int']>;
+  width_lte?: Maybe<Scalars['Int']>;
+  width_not?: Maybe<Scalars['Int']>;
+  width_not_in?: Maybe<Array<Maybe<Scalars['Int']>>>;
 };
 
 export type IAssetLinkingCollections = {
   __typename?: 'AssetLinkingCollections';
-  entryCollection?: Maybe<IEntryCollection>;
-  plantCollection?: Maybe<IPlantCollection>;
   authorCollection?: Maybe<IAuthorCollection>;
   categoryCollection?: Maybe<ICategoryCollection>;
-};
-
-
-export type IAssetLinkingCollectionsEntryCollectionArgs = {
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-  preview?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type IAssetLinkingCollectionsPlantCollectionArgs = {
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-  preview?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
+  entryCollection?: Maybe<IEntryCollection>;
+  plantCollection?: Maybe<IPlantCollection>;
 };
 
 
 export type IAssetLinkingCollectionsAuthorCollectionArgs = {
-  skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
-  preview?: Maybe<Scalars['Boolean']>;
   locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
 };
 
 
 export type IAssetLinkingCollectionsCategoryCollectionArgs = {
-  skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
-  preview?: Maybe<Scalars['Boolean']>;
   locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
+};
+
+
+export type IAssetLinkingCollectionsEntryCollectionArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
+};
+
+
+export type IAssetLinkingCollectionsPlantCollectionArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
 };
 
 export enum IAssetOrder {
-  UrlAsc = 'url_ASC',
-  UrlDesc = 'url_DESC',
-  SizeAsc = 'size_ASC',
-  SizeDesc = 'size_DESC',
   ContentTypeAsc = 'contentType_ASC',
   ContentTypeDesc = 'contentType_DESC',
   FileNameAsc = 'fileName_ASC',
   FileNameDesc = 'fileName_DESC',
-  WidthAsc = 'width_ASC',
-  WidthDesc = 'width_DESC',
   HeightAsc = 'height_ASC',
   HeightDesc = 'height_DESC',
+  SizeAsc = 'size_ASC',
+  SizeDesc = 'size_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
   SysIdDesc = 'sys_id_DESC',
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  UrlAsc = 'url_ASC',
+  UrlDesc = 'url_DESC',
+  WidthAsc = 'width_ASC',
+  WidthDesc = 'width_DESC'
 }
 
-/** Plant entry creator [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/author) */
+/** Plant entry creator [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/author) */
 export type IAuthor = IEntry & {
   __typename?: 'Author';
-  sys: ISys;
+  biography?: Maybe<Scalars['String']>;
   contentfulMetadata: IContentfulMetadata;
-  linkedFrom?: Maybe<IAuthorLinkingCollections>;
-  photo?: Maybe<IAsset>;
   fullName?: Maybe<Scalars['String']>;
   handle?: Maybe<Scalars['String']>;
-  biography?: Maybe<Scalars['String']>;
-  twitter?: Maybe<Scalars['String']>;
+  linkedFrom?: Maybe<IAuthorLinkingCollections>;
   linkedIn?: Maybe<Scalars['String']>;
+  photo?: Maybe<IAsset>;
+  sys: ISys;
+  twitter?: Maybe<Scalars['String']>;
 };
 
 
-/** Plant entry creator [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/author) */
-export type IAuthorLinkedFromArgs = {
-  allowedLocales?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-
-/** Plant entry creator [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/author) */
-export type IAuthorPhotoArgs = {
-  preview?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-/** Plant entry creator [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/author) */
-export type IAuthorFullNameArgs = {
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-/** Plant entry creator [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/author) */
-export type IAuthorHandleArgs = {
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-/** Plant entry creator [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/author) */
+/** Plant entry creator [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/author) */
 export type IAuthorBiographyArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
 
-/** Plant entry creator [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/author) */
-export type IAuthorTwitterArgs = {
+/** Plant entry creator [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/author) */
+export type IAuthorFullNameArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
 
-/** Plant entry creator [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/author) */
+/** Plant entry creator [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/author) */
+export type IAuthorHandleArgs = {
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+/** Plant entry creator [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/author) */
+export type IAuthorLinkedFromArgs = {
+  allowedLocales?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+
+/** Plant entry creator [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/author) */
 export type IAuthorLinkedInArgs = {
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+/** Plant entry creator [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/author) */
+export type IAuthorPhotoArgs = {
+  locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+};
+
+
+/** Plant entry creator [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/author) */
+export type IAuthorTwitterArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
 export type IAuthorCollection = {
   __typename?: 'AuthorCollection';
-  total: Scalars['Int'];
-  skip: Scalars['Int'];
-  limit: Scalars['Int'];
   items: Array<Maybe<IAuthor>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
 };
 
 export type IAuthorFilter = {
-  sys?: Maybe<ISysFilter>;
-  contentfulMetadata?: Maybe<IContentfulMetadataFilter>;
-  photo_exists?: Maybe<Scalars['Boolean']>;
-  fullName_exists?: Maybe<Scalars['Boolean']>;
-  fullName?: Maybe<Scalars['String']>;
-  fullName_not?: Maybe<Scalars['String']>;
-  fullName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  fullName_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  fullName_contains?: Maybe<Scalars['String']>;
-  fullName_not_contains?: Maybe<Scalars['String']>;
-  handle_exists?: Maybe<Scalars['Boolean']>;
-  handle?: Maybe<Scalars['String']>;
-  handle_not?: Maybe<Scalars['String']>;
-  handle_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  handle_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  handle_contains?: Maybe<Scalars['String']>;
-  handle_not_contains?: Maybe<Scalars['String']>;
-  biography_exists?: Maybe<Scalars['Boolean']>;
-  biography?: Maybe<Scalars['String']>;
-  biography_not?: Maybe<Scalars['String']>;
-  biography_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  biography_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  biography_contains?: Maybe<Scalars['String']>;
-  biography_not_contains?: Maybe<Scalars['String']>;
-  twitter_exists?: Maybe<Scalars['Boolean']>;
-  twitter?: Maybe<Scalars['String']>;
-  twitter_not?: Maybe<Scalars['String']>;
-  twitter_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  twitter_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  twitter_contains?: Maybe<Scalars['String']>;
-  twitter_not_contains?: Maybe<Scalars['String']>;
-  linkedIn_exists?: Maybe<Scalars['Boolean']>;
-  linkedIn?: Maybe<Scalars['String']>;
-  linkedIn_not?: Maybe<Scalars['String']>;
-  linkedIn_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  linkedIn_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  linkedIn_contains?: Maybe<Scalars['String']>;
-  linkedIn_not_contains?: Maybe<Scalars['String']>;
-  OR?: Maybe<Array<Maybe<IAuthorFilter>>>;
   AND?: Maybe<Array<Maybe<IAuthorFilter>>>;
+  OR?: Maybe<Array<Maybe<IAuthorFilter>>>;
+  biography?: Maybe<Scalars['String']>;
+  biography_contains?: Maybe<Scalars['String']>;
+  biography_exists?: Maybe<Scalars['Boolean']>;
+  biography_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  biography_not?: Maybe<Scalars['String']>;
+  biography_not_contains?: Maybe<Scalars['String']>;
+  biography_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  contentfulMetadata?: Maybe<IContentfulMetadataFilter>;
+  fullName?: Maybe<Scalars['String']>;
+  fullName_contains?: Maybe<Scalars['String']>;
+  fullName_exists?: Maybe<Scalars['Boolean']>;
+  fullName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  fullName_not?: Maybe<Scalars['String']>;
+  fullName_not_contains?: Maybe<Scalars['String']>;
+  fullName_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  handle?: Maybe<Scalars['String']>;
+  handle_contains?: Maybe<Scalars['String']>;
+  handle_exists?: Maybe<Scalars['Boolean']>;
+  handle_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  handle_not?: Maybe<Scalars['String']>;
+  handle_not_contains?: Maybe<Scalars['String']>;
+  handle_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  linkedIn?: Maybe<Scalars['String']>;
+  linkedIn_contains?: Maybe<Scalars['String']>;
+  linkedIn_exists?: Maybe<Scalars['Boolean']>;
+  linkedIn_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  linkedIn_not?: Maybe<Scalars['String']>;
+  linkedIn_not_contains?: Maybe<Scalars['String']>;
+  linkedIn_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  photo_exists?: Maybe<Scalars['Boolean']>;
+  sys?: Maybe<ISysFilter>;
+  twitter?: Maybe<Scalars['String']>;
+  twitter_contains?: Maybe<Scalars['String']>;
+  twitter_exists?: Maybe<Scalars['Boolean']>;
+  twitter_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  twitter_not?: Maybe<Scalars['String']>;
+  twitter_not_contains?: Maybe<Scalars['String']>;
+  twitter_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type IAuthorLinkingCollections = {
@@ -313,18 +313,18 @@ export type IAuthorLinkingCollections = {
 
 
 export type IAuthorLinkingCollectionsEntryCollectionArgs = {
-  skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
-  preview?: Maybe<Scalars['Boolean']>;
   locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
 };
 
 
 export type IAuthorLinkingCollectionsPlantCollectionArgs = {
-  skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
-  preview?: Maybe<Scalars['Boolean']>;
   locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
 };
 
 export enum IAuthorOrder {
@@ -332,98 +332,98 @@ export enum IAuthorOrder {
   FullNameDesc = 'fullName_DESC',
   HandleAsc = 'handle_ASC',
   HandleDesc = 'handle_DESC',
-  TwitterAsc = 'twitter_ASC',
-  TwitterDesc = 'twitter_DESC',
   LinkedInAsc = 'linkedIn_ASC',
   LinkedInDesc = 'linkedIn_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
   SysIdDesc = 'sys_id_DESC',
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TwitterAsc = 'twitter_ASC',
+  TwitterDesc = 'twitter_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/category) */
+/** [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/category) */
 export type ICategory = IEntry & {
   __typename?: 'Category';
-  sys: ISys;
-  contentfulMetadata: IContentfulMetadata;
-  linkedFrom?: Maybe<ICategoryLinkingCollections>;
-  title?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
-  icon?: Maybe<IAsset>;
   categoryDescription?: Maybe<Scalars['String']>;
+  contentfulMetadata: IContentfulMetadata;
+  icon?: Maybe<IAsset>;
+  linkedFrom?: Maybe<ICategoryLinkingCollections>;
+  slug?: Maybe<Scalars['String']>;
+  sys: ISys;
+  title?: Maybe<Scalars['String']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/category) */
+/** [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/category) */
+export type ICategoryCategoryDescriptionArgs = {
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/category) */
+export type ICategoryIconArgs = {
+  locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/category) */
 export type ICategoryLinkedFromArgs = {
   allowedLocales?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/category) */
-export type ICategoryTitleArgs = {
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/category) */
+/** [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/category) */
 export type ICategorySlugArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/category) */
-export type ICategoryIconArgs = {
-  preview?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/category) */
-export type ICategoryCategoryDescriptionArgs = {
+/** [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/category) */
+export type ICategoryTitleArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
 export type ICategoryCollection = {
   __typename?: 'CategoryCollection';
-  total: Scalars['Int'];
-  skip: Scalars['Int'];
-  limit: Scalars['Int'];
   items: Array<Maybe<ICategory>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
 };
 
 export type ICategoryFilter = {
-  sys?: Maybe<ISysFilter>;
-  contentfulMetadata?: Maybe<IContentfulMetadataFilter>;
-  title_exists?: Maybe<Scalars['Boolean']>;
-  title?: Maybe<Scalars['String']>;
-  title_not?: Maybe<Scalars['String']>;
-  title_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  title_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  title_contains?: Maybe<Scalars['String']>;
-  title_not_contains?: Maybe<Scalars['String']>;
-  slug_exists?: Maybe<Scalars['Boolean']>;
-  slug?: Maybe<Scalars['String']>;
-  slug_not?: Maybe<Scalars['String']>;
-  slug_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  slug_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  slug_contains?: Maybe<Scalars['String']>;
-  slug_not_contains?: Maybe<Scalars['String']>;
-  icon_exists?: Maybe<Scalars['Boolean']>;
-  categoryDescription_exists?: Maybe<Scalars['Boolean']>;
-  categoryDescription?: Maybe<Scalars['String']>;
-  categoryDescription_not?: Maybe<Scalars['String']>;
-  categoryDescription_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  categoryDescription_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  categoryDescription_contains?: Maybe<Scalars['String']>;
-  categoryDescription_not_contains?: Maybe<Scalars['String']>;
-  OR?: Maybe<Array<Maybe<ICategoryFilter>>>;
   AND?: Maybe<Array<Maybe<ICategoryFilter>>>;
+  OR?: Maybe<Array<Maybe<ICategoryFilter>>>;
+  categoryDescription?: Maybe<Scalars['String']>;
+  categoryDescription_contains?: Maybe<Scalars['String']>;
+  categoryDescription_exists?: Maybe<Scalars['Boolean']>;
+  categoryDescription_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  categoryDescription_not?: Maybe<Scalars['String']>;
+  categoryDescription_not_contains?: Maybe<Scalars['String']>;
+  categoryDescription_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  contentfulMetadata?: Maybe<IContentfulMetadataFilter>;
+  icon_exists?: Maybe<Scalars['Boolean']>;
+  slug?: Maybe<Scalars['String']>;
+  slug_contains?: Maybe<Scalars['String']>;
+  slug_exists?: Maybe<Scalars['Boolean']>;
+  slug_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  slug_not?: Maybe<Scalars['String']>;
+  slug_not_contains?: Maybe<Scalars['String']>;
+  slug_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  sys?: Maybe<ISysFilter>;
+  title?: Maybe<Scalars['String']>;
+  title_contains?: Maybe<Scalars['String']>;
+  title_exists?: Maybe<Scalars['Boolean']>;
+  title_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  title_not?: Maybe<Scalars['String']>;
+  title_not_contains?: Maybe<Scalars['String']>;
+  title_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type ICategoryLinkingCollections = {
@@ -434,29 +434,29 @@ export type ICategoryLinkingCollections = {
 
 
 export type ICategoryLinkingCollectionsEntryCollectionArgs = {
-  skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
-  preview?: Maybe<Scalars['Boolean']>;
   locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
 };
 
 
 export type ICategoryLinkingCollectionsPlantCollectionArgs = {
-  skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
-  preview?: Maybe<Scalars['Boolean']>;
   locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
 };
 
 export enum ICategoryOrder {
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
   SysIdDesc = 'sys_id_DESC',
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
@@ -467,14 +467,14 @@ export type IContentfulMetadata = {
 };
 
 export type IContentfulMetadataFilter = {
-  tags_exists?: Maybe<Scalars['Boolean']>;
   tags?: Maybe<IContentfulMetadataTagsFilter>;
+  tags_exists?: Maybe<Scalars['Boolean']>;
 };
 
 export type IContentfulMetadataTagsFilter = {
   id_contains_all?: Maybe<Array<Maybe<Scalars['String']>>>;
-  id_contains_some?: Maybe<Array<Maybe<Scalars['String']>>>;
   id_contains_none?: Maybe<Array<Maybe<Scalars['String']>>>;
+  id_contains_some?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 /**
@@ -487,39 +487,36 @@ export type IContentfulTag = {
   name?: Maybe<Scalars['String']>;
 };
 
-
-
 export type IEntry = {
-  sys: ISys;
   contentfulMetadata: IContentfulMetadata;
+  sys: ISys;
 };
 
 export type IEntryCollection = {
   __typename?: 'EntryCollection';
-  total: Scalars['Int'];
-  skip: Scalars['Int'];
-  limit: Scalars['Int'];
   items: Array<Maybe<IEntry>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
 };
 
 export type IEntryFilter = {
-  sys?: Maybe<ISysFilter>;
-  contentfulMetadata?: Maybe<IContentfulMetadataFilter>;
-  OR?: Maybe<Array<Maybe<IEntryFilter>>>;
   AND?: Maybe<Array<Maybe<IEntryFilter>>>;
+  OR?: Maybe<Array<Maybe<IEntryFilter>>>;
+  contentfulMetadata?: Maybe<IContentfulMetadataFilter>;
+  sys?: Maybe<ISysFilter>;
 };
 
 export enum IEntryOrder {
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
   SysIdDesc = 'sys_id_DESC',
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
-
 
 export enum IImageFormat {
   /** JPG image format. */
@@ -543,31 +540,35 @@ export enum IImageFormat {
 }
 
 export enum IImageResizeFocus {
-  /** Focus the resizing on the center. */
-  Center = 'CENTER',
-  /** Focus the resizing on the top. */
-  Top = 'TOP',
-  /** Focus the resizing on the top right. */
-  TopRight = 'TOP_RIGHT',
-  /** Focus the resizing on the right. */
-  Right = 'RIGHT',
-  /** Focus the resizing on the bottom right. */
-  BottomRight = 'BOTTOM_RIGHT',
   /** Focus the resizing on the bottom. */
   Bottom = 'BOTTOM',
   /** Focus the resizing on the bottom left. */
   BottomLeft = 'BOTTOM_LEFT',
-  /** Focus the resizing on the left. */
-  Left = 'LEFT',
-  /** Focus the resizing on the top left. */
-  TopLeft = 'TOP_LEFT',
+  /** Focus the resizing on the bottom right. */
+  BottomRight = 'BOTTOM_RIGHT',
+  /** Focus the resizing on the center. */
+  Center = 'CENTER',
   /** Focus the resizing on the largest face. */
   Face = 'FACE',
   /** Focus the resizing on the area containing all the faces. */
-  Faces = 'FACES'
+  Faces = 'FACES',
+  /** Focus the resizing on the left. */
+  Left = 'LEFT',
+  /** Focus the resizing on the right. */
+  Right = 'RIGHT',
+  /** Focus the resizing on the top. */
+  Top = 'TOP',
+  /** Focus the resizing on the top left. */
+  TopLeft = 'TOP_LEFT',
+  /** Focus the resizing on the top right. */
+  TopRight = 'TOP_RIGHT'
 }
 
 export enum IImageResizeStrategy {
+  /** Crops a part of the original image to fit into the specified dimensions. */
+  Crop = 'CROP',
+  /** Resizes the image to the specified dimensions, cropping the image if needed. */
+  Fill = 'FILL',
   /** Resizes the image to fit into the specified dimensions. */
   Fit = 'FIT',
   /**
@@ -575,26 +576,18 @@ export enum IImageResizeStrategy {
    *         Uses desired background color as padding color.
    */
   Pad = 'PAD',
-  /** Resizes the image to the specified dimensions, cropping the image if needed. */
-  Fill = 'FILL',
   /** Resizes the image to the specified dimensions, changing the original aspect ratio if needed. */
   Scale = 'SCALE',
-  /** Crops a part of the original image to fit into the specified dimensions. */
-  Crop = 'CROP',
   /** Creates a thumbnail from the image. */
   Thumb = 'THUMB'
 }
 
 export type IImageTransformOptions = {
-  /** Desired width in pixels. Defaults to the original image width. */
-  width?: Maybe<Scalars['Dimension']>;
-  /** Desired height in pixels. Defaults to the original image height. */
-  height?: Maybe<Scalars['Dimension']>;
   /**
-   * Desired quality of the image in percents.
-   *         Used for `PNG8`, `JPG`, `JPG_PROGRESSIVE` and `WEBP` formats.
+   * Desired background color, used with corner radius or `PAD` resize strategy.
+   *         Defaults to transparent (for `PNG`, `PNG8` and `WEBP`) or white (for `JPG` and `JPG_PROGRESSIVE`).
    */
-  quality?: Maybe<Scalars['Quality']>;
+  backgroundColor?: Maybe<Scalars['HexColor']>;
   /**
    * Desired corner radius in pixels.
    *         Results in an image with rounded corners (pass `-1` for a full circle/ellipse).
@@ -602,85 +595,88 @@ export type IImageTransformOptions = {
    *         unless the format is `JPG` or `JPG_PROGRESSIVE` and resize strategy is `PAD`, then defaults to white.
    */
   cornerRadius?: Maybe<Scalars['Int']>;
-  /** Desired resize strategy. Defaults to `FIT`. */
-  resizeStrategy?: Maybe<IImageResizeStrategy>;
-  /** Desired resize focus area. Defaults to `CENTER`. */
-  resizeFocus?: Maybe<IImageResizeFocus>;
-  /**
-   * Desired background color, used with corner radius or `PAD` resize strategy.
-   *         Defaults to transparent (for `PNG`, `PNG8` and `WEBP`) or white (for `JPG` and `JPG_PROGRESSIVE`).
-   */
-  backgroundColor?: Maybe<Scalars['HexColor']>;
   /** Desired image format. Defaults to the original image format. */
   format?: Maybe<IImageFormat>;
+  /** Desired height in pixels. Defaults to the original image height. */
+  height?: Maybe<Scalars['Dimension']>;
+  /**
+   * Desired quality of the image in percents.
+   *         Used for `PNG8`, `JPG`, `JPG_PROGRESSIVE` and `WEBP` formats.
+   */
+  quality?: Maybe<Scalars['Quality']>;
+  /** Desired resize focus area. Defaults to `CENTER`. */
+  resizeFocus?: Maybe<IImageResizeFocus>;
+  /** Desired resize strategy. Defaults to `FIT`. */
+  resizeStrategy?: Maybe<IImageResizeStrategy>;
+  /** Desired width in pixels. Defaults to the original image width. */
+  width?: Maybe<Scalars['Dimension']>;
 };
 
-
-/** [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/plant) */
+/** [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/plant) */
 export type IPlant = IEntry & {
   __typename?: 'Plant';
-  sys: ISys;
+  author?: Maybe<IAuthor>;
+  category?: Maybe<ICategory>;
   contentfulMetadata: IContentfulMetadata;
+  description?: Maybe<IPlantDescription>;
+  image?: Maybe<IAsset>;
   linkedFrom?: Maybe<IPlantLinkingCollections>;
   plantName?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
-  description?: Maybe<IPlantDescription>;
-  image?: Maybe<IAsset>;
-  category?: Maybe<ICategory>;
-  author?: Maybe<IAuthor>;
+  sys: ISys;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/plant) */
-export type IPlantLinkedFromArgs = {
-  allowedLocales?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/plant) */
-export type IPlantPlantNameArgs = {
+/** [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/plant) */
+export type IPlantAuthorArgs = {
   locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/plant) */
-export type IPlantSlugArgs = {
+/** [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/plant) */
+export type IPlantCategoryArgs = {
   locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/plant) */
+/** [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/plant) */
 export type IPlantDescriptionArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/plant) */
+/** [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/plant) */
 export type IPlantImageArgs = {
+  locale?: Maybe<Scalars['String']>;
   preview?: Maybe<Scalars['Boolean']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/plant) */
+export type IPlantLinkedFromArgs = {
+  allowedLocales?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/plant) */
+export type IPlantPlantNameArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/plant) */
-export type IPlantCategoryArgs = {
-  preview?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/t888he5mrnzj/content_types/plant) */
-export type IPlantAuthorArgs = {
-  preview?: Maybe<Scalars['Boolean']>;
+/** [See type definition](https://app.contentful.com/spaces/sl3v8axw5oze/content_types/plant) */
+export type IPlantSlugArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
 export type IPlantCollection = {
   __typename?: 'PlantCollection';
-  total: Scalars['Int'];
-  skip: Scalars['Int'];
-  limit: Scalars['Int'];
   items: Array<Maybe<IPlant>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
 };
 
 export type IPlantDescription = {
@@ -691,50 +687,50 @@ export type IPlantDescription = {
 
 export type IPlantDescriptionAssets = {
   __typename?: 'PlantDescriptionAssets';
-  hyperlink: Array<Maybe<IAsset>>;
   block: Array<Maybe<IAsset>>;
+  hyperlink: Array<Maybe<IAsset>>;
 };
 
 export type IPlantDescriptionEntries = {
   __typename?: 'PlantDescriptionEntries';
-  inline: Array<Maybe<IEntry>>;
-  hyperlink: Array<Maybe<IEntry>>;
   block: Array<Maybe<IEntry>>;
+  hyperlink: Array<Maybe<IEntry>>;
+  inline: Array<Maybe<IEntry>>;
 };
 
 export type IPlantDescriptionLinks = {
   __typename?: 'PlantDescriptionLinks';
-  entries: IPlantDescriptionEntries;
   assets: IPlantDescriptionAssets;
+  entries: IPlantDescriptionEntries;
 };
 
 export type IPlantFilter = {
-  category?: Maybe<ICfCategoryNestedFilter>;
+  AND?: Maybe<Array<Maybe<IPlantFilter>>>;
+  OR?: Maybe<Array<Maybe<IPlantFilter>>>;
   author?: Maybe<ICfAuthorNestedFilter>;
-  sys?: Maybe<ISysFilter>;
+  author_exists?: Maybe<Scalars['Boolean']>;
+  category?: Maybe<ICfCategoryNestedFilter>;
+  category_exists?: Maybe<Scalars['Boolean']>;
   contentfulMetadata?: Maybe<IContentfulMetadataFilter>;
-  plantName_exists?: Maybe<Scalars['Boolean']>;
-  plantName?: Maybe<Scalars['String']>;
-  plantName_not?: Maybe<Scalars['String']>;
-  plantName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  plantName_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  plantName_contains?: Maybe<Scalars['String']>;
-  plantName_not_contains?: Maybe<Scalars['String']>;
-  slug_exists?: Maybe<Scalars['Boolean']>;
-  slug?: Maybe<Scalars['String']>;
-  slug_not?: Maybe<Scalars['String']>;
-  slug_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  slug_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  slug_contains?: Maybe<Scalars['String']>;
-  slug_not_contains?: Maybe<Scalars['String']>;
-  description_exists?: Maybe<Scalars['Boolean']>;
   description_contains?: Maybe<Scalars['String']>;
+  description_exists?: Maybe<Scalars['Boolean']>;
   description_not_contains?: Maybe<Scalars['String']>;
   image_exists?: Maybe<Scalars['Boolean']>;
-  category_exists?: Maybe<Scalars['Boolean']>;
-  author_exists?: Maybe<Scalars['Boolean']>;
-  OR?: Maybe<Array<Maybe<IPlantFilter>>>;
-  AND?: Maybe<Array<Maybe<IPlantFilter>>>;
+  plantName?: Maybe<Scalars['String']>;
+  plantName_contains?: Maybe<Scalars['String']>;
+  plantName_exists?: Maybe<Scalars['Boolean']>;
+  plantName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  plantName_not?: Maybe<Scalars['String']>;
+  plantName_not_contains?: Maybe<Scalars['String']>;
+  plantName_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  slug?: Maybe<Scalars['String']>;
+  slug_contains?: Maybe<Scalars['String']>;
+  slug_exists?: Maybe<Scalars['Boolean']>;
+  slug_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  slug_not?: Maybe<Scalars['String']>;
+  slug_not_contains?: Maybe<Scalars['String']>;
+  slug_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  sys?: Maybe<ISysFilter>;
 };
 
 export type IPlantLinkingCollections = {
@@ -744,285 +740,242 @@ export type IPlantLinkingCollections = {
 
 
 export type IPlantLinkingCollectionsEntryCollectionArgs = {
-  skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
-  preview?: Maybe<Scalars['Boolean']>;
   locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
 };
 
 export enum IPlantOrder {
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
   SysIdDesc = 'sys_id_DESC',
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
-
 
 export type IQuery = {
   __typename?: 'Query';
   asset?: Maybe<IAsset>;
   assetCollection?: Maybe<IAssetCollection>;
-  plant?: Maybe<IPlant>;
-  plantCollection?: Maybe<IPlantCollection>;
   author?: Maybe<IAuthor>;
   authorCollection?: Maybe<IAuthorCollection>;
   category?: Maybe<ICategory>;
   categoryCollection?: Maybe<ICategoryCollection>;
   entryCollection?: Maybe<IEntryCollection>;
+  plant?: Maybe<IPlant>;
+  plantCollection?: Maybe<IPlantCollection>;
 };
 
 
 export type IQueryAssetArgs = {
   id: Scalars['String'];
-  preview?: Maybe<Scalars['Boolean']>;
   locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
 };
 
 
 export type IQueryAssetCollectionArgs = {
-  skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
-  preview?: Maybe<Scalars['Boolean']>;
   locale?: Maybe<Scalars['String']>;
-  where?: Maybe<IAssetFilter>;
   order?: Maybe<Array<Maybe<IAssetOrder>>>;
-};
-
-
-export type IQueryPlantArgs = {
-  id: Scalars['String'];
   preview?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type IQueryPlantCollectionArgs = {
   skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-  preview?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
-  where?: Maybe<IPlantFilter>;
-  order?: Maybe<Array<Maybe<IPlantOrder>>>;
+  where?: Maybe<IAssetFilter>;
 };
 
 
 export type IQueryAuthorArgs = {
   id: Scalars['String'];
-  preview?: Maybe<Scalars['Boolean']>;
   locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
 };
 
 
 export type IQueryAuthorCollectionArgs = {
-  skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
-  preview?: Maybe<Scalars['Boolean']>;
   locale?: Maybe<Scalars['String']>;
-  where?: Maybe<IAuthorFilter>;
   order?: Maybe<Array<Maybe<IAuthorOrder>>>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
+  where?: Maybe<IAuthorFilter>;
 };
 
 
 export type IQueryCategoryArgs = {
   id: Scalars['String'];
-  preview?: Maybe<Scalars['Boolean']>;
   locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
 };
 
 
 export type IQueryCategoryCollectionArgs = {
-  skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
-  preview?: Maybe<Scalars['Boolean']>;
   locale?: Maybe<Scalars['String']>;
-  where?: Maybe<ICategoryFilter>;
   order?: Maybe<Array<Maybe<ICategoryOrder>>>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
+  where?: Maybe<ICategoryFilter>;
 };
 
 
 export type IQueryEntryCollectionArgs = {
-  skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
-  preview?: Maybe<Scalars['Boolean']>;
   locale?: Maybe<Scalars['String']>;
-  where?: Maybe<IEntryFilter>;
   order?: Maybe<Array<Maybe<IEntryOrder>>>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
+  where?: Maybe<IEntryFilter>;
+};
+
+
+export type IQueryPlantArgs = {
+  id: Scalars['String'];
+  locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+};
+
+
+export type IQueryPlantCollectionArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  locale?: Maybe<Scalars['String']>;
+  order?: Maybe<Array<Maybe<IPlantOrder>>>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
+  where?: Maybe<IPlantFilter>;
 };
 
 export type ISys = {
   __typename?: 'Sys';
-  id: Scalars['String'];
-  spaceId: Scalars['String'];
   environmentId: Scalars['String'];
-  publishedAt?: Maybe<Scalars['DateTime']>;
   firstPublishedAt?: Maybe<Scalars['DateTime']>;
+  id: Scalars['String'];
+  publishedAt?: Maybe<Scalars['DateTime']>;
   publishedVersion?: Maybe<Scalars['Int']>;
+  spaceId: Scalars['String'];
 };
 
 export type ISysFilter = {
-  id_exists?: Maybe<Scalars['Boolean']>;
-  id?: Maybe<Scalars['String']>;
-  id_not?: Maybe<Scalars['String']>;
-  id_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  id_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  id_contains?: Maybe<Scalars['String']>;
-  id_not_contains?: Maybe<Scalars['String']>;
-  publishedAt_exists?: Maybe<Scalars['Boolean']>;
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  publishedAt_not?: Maybe<Scalars['DateTime']>;
-  publishedAt_in?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
-  publishedAt_not_in?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
-  publishedAt_gt?: Maybe<Scalars['DateTime']>;
-  publishedAt_gte?: Maybe<Scalars['DateTime']>;
-  publishedAt_lt?: Maybe<Scalars['DateTime']>;
-  publishedAt_lte?: Maybe<Scalars['DateTime']>;
-  firstPublishedAt_exists?: Maybe<Scalars['Boolean']>;
   firstPublishedAt?: Maybe<Scalars['DateTime']>;
-  firstPublishedAt_not?: Maybe<Scalars['DateTime']>;
-  firstPublishedAt_in?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
-  firstPublishedAt_not_in?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
+  firstPublishedAt_exists?: Maybe<Scalars['Boolean']>;
   firstPublishedAt_gt?: Maybe<Scalars['DateTime']>;
   firstPublishedAt_gte?: Maybe<Scalars['DateTime']>;
+  firstPublishedAt_in?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
   firstPublishedAt_lt?: Maybe<Scalars['DateTime']>;
   firstPublishedAt_lte?: Maybe<Scalars['DateTime']>;
-  publishedVersion_exists?: Maybe<Scalars['Boolean']>;
+  firstPublishedAt_not?: Maybe<Scalars['DateTime']>;
+  firstPublishedAt_not_in?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
+  id?: Maybe<Scalars['String']>;
+  id_contains?: Maybe<Scalars['String']>;
+  id_exists?: Maybe<Scalars['Boolean']>;
+  id_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  id_not?: Maybe<Scalars['String']>;
+  id_not_contains?: Maybe<Scalars['String']>;
+  id_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  publishedAt_exists?: Maybe<Scalars['Boolean']>;
+  publishedAt_gt?: Maybe<Scalars['DateTime']>;
+  publishedAt_gte?: Maybe<Scalars['DateTime']>;
+  publishedAt_in?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
+  publishedAt_lt?: Maybe<Scalars['DateTime']>;
+  publishedAt_lte?: Maybe<Scalars['DateTime']>;
+  publishedAt_not?: Maybe<Scalars['DateTime']>;
+  publishedAt_not_in?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
   publishedVersion?: Maybe<Scalars['Float']>;
-  publishedVersion_not?: Maybe<Scalars['Float']>;
-  publishedVersion_in?: Maybe<Array<Maybe<Scalars['Float']>>>;
-  publishedVersion_not_in?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  publishedVersion_exists?: Maybe<Scalars['Boolean']>;
   publishedVersion_gt?: Maybe<Scalars['Float']>;
   publishedVersion_gte?: Maybe<Scalars['Float']>;
+  publishedVersion_in?: Maybe<Array<Maybe<Scalars['Float']>>>;
   publishedVersion_lt?: Maybe<Scalars['Float']>;
   publishedVersion_lte?: Maybe<Scalars['Float']>;
+  publishedVersion_not?: Maybe<Scalars['Float']>;
+  publishedVersion_not_in?: Maybe<Array<Maybe<Scalars['Float']>>>;
 };
 
 export type ICfAuthorNestedFilter = {
-  sys?: Maybe<ISysFilter>;
-  contentfulMetadata?: Maybe<IContentfulMetadataFilter>;
-  photo_exists?: Maybe<Scalars['Boolean']>;
-  fullName_exists?: Maybe<Scalars['Boolean']>;
-  fullName?: Maybe<Scalars['String']>;
-  fullName_not?: Maybe<Scalars['String']>;
-  fullName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  fullName_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  fullName_contains?: Maybe<Scalars['String']>;
-  fullName_not_contains?: Maybe<Scalars['String']>;
-  handle_exists?: Maybe<Scalars['Boolean']>;
-  handle?: Maybe<Scalars['String']>;
-  handle_not?: Maybe<Scalars['String']>;
-  handle_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  handle_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  handle_contains?: Maybe<Scalars['String']>;
-  handle_not_contains?: Maybe<Scalars['String']>;
-  biography_exists?: Maybe<Scalars['Boolean']>;
-  biography?: Maybe<Scalars['String']>;
-  biography_not?: Maybe<Scalars['String']>;
-  biography_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  biography_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  biography_contains?: Maybe<Scalars['String']>;
-  biography_not_contains?: Maybe<Scalars['String']>;
-  twitter_exists?: Maybe<Scalars['Boolean']>;
-  twitter?: Maybe<Scalars['String']>;
-  twitter_not?: Maybe<Scalars['String']>;
-  twitter_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  twitter_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  twitter_contains?: Maybe<Scalars['String']>;
-  twitter_not_contains?: Maybe<Scalars['String']>;
-  linkedIn_exists?: Maybe<Scalars['Boolean']>;
-  linkedIn?: Maybe<Scalars['String']>;
-  linkedIn_not?: Maybe<Scalars['String']>;
-  linkedIn_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  linkedIn_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  linkedIn_contains?: Maybe<Scalars['String']>;
-  linkedIn_not_contains?: Maybe<Scalars['String']>;
-  OR?: Maybe<Array<Maybe<ICfAuthorNestedFilter>>>;
   AND?: Maybe<Array<Maybe<ICfAuthorNestedFilter>>>;
+  OR?: Maybe<Array<Maybe<ICfAuthorNestedFilter>>>;
+  biography?: Maybe<Scalars['String']>;
+  biography_contains?: Maybe<Scalars['String']>;
+  biography_exists?: Maybe<Scalars['Boolean']>;
+  biography_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  biography_not?: Maybe<Scalars['String']>;
+  biography_not_contains?: Maybe<Scalars['String']>;
+  biography_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  contentfulMetadata?: Maybe<IContentfulMetadataFilter>;
+  fullName?: Maybe<Scalars['String']>;
+  fullName_contains?: Maybe<Scalars['String']>;
+  fullName_exists?: Maybe<Scalars['Boolean']>;
+  fullName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  fullName_not?: Maybe<Scalars['String']>;
+  fullName_not_contains?: Maybe<Scalars['String']>;
+  fullName_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  handle?: Maybe<Scalars['String']>;
+  handle_contains?: Maybe<Scalars['String']>;
+  handle_exists?: Maybe<Scalars['Boolean']>;
+  handle_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  handle_not?: Maybe<Scalars['String']>;
+  handle_not_contains?: Maybe<Scalars['String']>;
+  handle_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  linkedIn?: Maybe<Scalars['String']>;
+  linkedIn_contains?: Maybe<Scalars['String']>;
+  linkedIn_exists?: Maybe<Scalars['Boolean']>;
+  linkedIn_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  linkedIn_not?: Maybe<Scalars['String']>;
+  linkedIn_not_contains?: Maybe<Scalars['String']>;
+  linkedIn_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  photo_exists?: Maybe<Scalars['Boolean']>;
+  sys?: Maybe<ISysFilter>;
+  twitter?: Maybe<Scalars['String']>;
+  twitter_contains?: Maybe<Scalars['String']>;
+  twitter_exists?: Maybe<Scalars['Boolean']>;
+  twitter_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  twitter_not?: Maybe<Scalars['String']>;
+  twitter_not_contains?: Maybe<Scalars['String']>;
+  twitter_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type ICfCategoryNestedFilter = {
-  sys?: Maybe<ISysFilter>;
-  contentfulMetadata?: Maybe<IContentfulMetadataFilter>;
-  title_exists?: Maybe<Scalars['Boolean']>;
-  title?: Maybe<Scalars['String']>;
-  title_not?: Maybe<Scalars['String']>;
-  title_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  title_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  title_contains?: Maybe<Scalars['String']>;
-  title_not_contains?: Maybe<Scalars['String']>;
-  slug_exists?: Maybe<Scalars['Boolean']>;
-  slug?: Maybe<Scalars['String']>;
-  slug_not?: Maybe<Scalars['String']>;
-  slug_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  slug_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  slug_contains?: Maybe<Scalars['String']>;
-  slug_not_contains?: Maybe<Scalars['String']>;
-  icon_exists?: Maybe<Scalars['Boolean']>;
-  categoryDescription_exists?: Maybe<Scalars['Boolean']>;
-  categoryDescription?: Maybe<Scalars['String']>;
-  categoryDescription_not?: Maybe<Scalars['String']>;
-  categoryDescription_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  categoryDescription_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  categoryDescription_contains?: Maybe<Scalars['String']>;
-  categoryDescription_not_contains?: Maybe<Scalars['String']>;
-  OR?: Maybe<Array<Maybe<ICfCategoryNestedFilter>>>;
   AND?: Maybe<Array<Maybe<ICfCategoryNestedFilter>>>;
+  OR?: Maybe<Array<Maybe<ICfCategoryNestedFilter>>>;
+  categoryDescription?: Maybe<Scalars['String']>;
+  categoryDescription_contains?: Maybe<Scalars['String']>;
+  categoryDescription_exists?: Maybe<Scalars['Boolean']>;
+  categoryDescription_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  categoryDescription_not?: Maybe<Scalars['String']>;
+  categoryDescription_not_contains?: Maybe<Scalars['String']>;
+  categoryDescription_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  contentfulMetadata?: Maybe<IContentfulMetadataFilter>;
+  icon_exists?: Maybe<Scalars['Boolean']>;
+  slug?: Maybe<Scalars['String']>;
+  slug_contains?: Maybe<Scalars['String']>;
+  slug_exists?: Maybe<Scalars['Boolean']>;
+  slug_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  slug_not?: Maybe<Scalars['String']>;
+  slug_not_contains?: Maybe<Scalars['String']>;
+  slug_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  sys?: Maybe<ISysFilter>;
+  title?: Maybe<Scalars['String']>;
+  title_contains?: Maybe<Scalars['String']>;
+  title_exists?: Maybe<Scalars['Boolean']>;
+  title_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  title_not?: Maybe<Scalars['String']>;
+  title_not_contains?: Maybe<Scalars['String']>;
+  title_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
-export type IAssetFieldsFragment = (
-  { __typename?: 'Asset' }
-  & Pick<IAsset, 'title' | 'url' | 'width' | 'height'>
-);
+export type IAssetFieldsFragment = { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined };
 
-export type IAuthorFieldsFragment = (
-  { __typename?: 'Author' }
-  & Pick<IAuthor, 'fullName' | 'handle' | 'biography' | 'twitter' | 'linkedIn'>
-  & { sys: (
-    { __typename?: 'Sys' }
-    & Pick<ISys, 'id'>
-  ), photo?: Maybe<(
-    { __typename?: 'Asset' }
-    & IAssetFieldsFragment
-  )> }
-);
+export type IAuthorFieldsFragment = { __typename?: 'Author', fullName?: string | null | undefined, handle?: string | null | undefined, biography?: string | null | undefined, twitter?: string | null | undefined, linkedIn?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, photo?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined };
 
-export type ICategoryFieldsFragment = (
-  { __typename?: 'Category' }
-  & Pick<ICategory, 'slug' | 'title' | 'categoryDescription'>
-  & { sys: (
-    { __typename?: 'Sys' }
-    & Pick<ISys, 'id'>
-  ), icon?: Maybe<(
-    { __typename?: 'Asset' }
-    & IAssetFieldsFragment
-  )> }
-);
+export type ICategoryFieldsFragment = { __typename?: 'Category', slug?: string | null | undefined, title?: string | null | undefined, categoryDescription?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, icon?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined };
 
-export type IPlantFieldsFragment = (
-  { __typename?: 'Plant' }
-  & Pick<IPlant, 'slug' | 'plantName'>
-  & { sys: (
-    { __typename?: 'Sys' }
-    & Pick<ISys, 'id'>
-  ), image?: Maybe<(
-    { __typename?: 'Asset' }
-    & IAssetFieldsFragment
-  )>, description?: Maybe<(
-    { __typename?: 'PlantDescription' }
-    & Pick<IPlantDescription, 'json'>
-  )>, author?: Maybe<(
-    { __typename?: 'Author' }
-    & IAuthorFieldsFragment
-  )>, category?: Maybe<(
-    { __typename?: 'Category' }
-    & ICategoryFieldsFragment
-  )> }
-);
+export type IPlantFieldsFragment = { __typename?: 'Plant', slug?: string | null | undefined, plantName?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, image?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined, description?: { __typename?: 'PlantDescription', json: any } | null | undefined, author?: { __typename?: 'Author', fullName?: string | null | undefined, handle?: string | null | undefined, biography?: string | null | undefined, twitter?: string | null | undefined, linkedIn?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, photo?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined } | null | undefined, category?: { __typename?: 'Category', slug?: string | null | undefined, title?: string | null | undefined, categoryDescription?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, icon?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined } | null | undefined };
 
 export type IGetPlantListQueryVariables = Exact<{
   limit?: Maybe<Scalars['Int']>;
@@ -1032,17 +985,7 @@ export type IGetPlantListQueryVariables = Exact<{
 }>;
 
 
-export type IGetPlantListQuery = (
-  { __typename?: 'Query' }
-  & { plantCollection?: Maybe<(
-    { __typename?: 'PlantCollection' }
-    & Pick<IPlantCollection, 'total' | 'skip' | 'limit'>
-    & { items: Array<Maybe<(
-      { __typename?: 'Plant' }
-      & IPlantFieldsFragment
-    )>> }
-  )> }
-);
+export type IGetPlantListQuery = { __typename?: 'Query', plantCollection?: { __typename?: 'PlantCollection', total: number, skip: number, limit: number, items: Array<{ __typename?: 'Plant', slug?: string | null | undefined, plantName?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, image?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined, description?: { __typename?: 'PlantDescription', json: any } | null | undefined, author?: { __typename?: 'Author', fullName?: string | null | undefined, handle?: string | null | undefined, biography?: string | null | undefined, twitter?: string | null | undefined, linkedIn?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, photo?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined } | null | undefined, category?: { __typename?: 'Category', slug?: string | null | undefined, title?: string | null | undefined, categoryDescription?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, icon?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined } | null | undefined } | null | undefined> } | null | undefined };
 
 export type IGetPlantQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -1051,16 +994,7 @@ export type IGetPlantQueryVariables = Exact<{
 }>;
 
 
-export type IGetPlantQuery = (
-  { __typename?: 'Query' }
-  & { plantCollection?: Maybe<(
-    { __typename?: 'PlantCollection' }
-    & { items: Array<Maybe<(
-      { __typename?: 'Plant' }
-      & IPlantFieldsFragment
-    )>> }
-  )> }
-);
+export type IGetPlantQuery = { __typename?: 'Query', plantCollection?: { __typename?: 'PlantCollection', items: Array<{ __typename?: 'Plant', slug?: string | null | undefined, plantName?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, image?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined, description?: { __typename?: 'PlantDescription', json: any } | null | undefined, author?: { __typename?: 'Author', fullName?: string | null | undefined, handle?: string | null | undefined, biography?: string | null | undefined, twitter?: string | null | undefined, linkedIn?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, photo?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined } | null | undefined, category?: { __typename?: 'Category', slug?: string | null | undefined, title?: string | null | undefined, categoryDescription?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, icon?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined } | null | undefined } | null | undefined> } | null | undefined };
 
 export type ISearchPlantQueryVariables = Exact<{
   term: Scalars['String'];
@@ -1070,17 +1004,7 @@ export type ISearchPlantQueryVariables = Exact<{
 }>;
 
 
-export type ISearchPlantQuery = (
-  { __typename?: 'Query' }
-  & { plantCollection?: Maybe<(
-    { __typename?: 'PlantCollection' }
-    & Pick<IPlantCollection, 'total' | 'skip' | 'limit'>
-    & { items: Array<Maybe<(
-      { __typename?: 'Plant' }
-      & IPlantFieldsFragment
-    )>> }
-  )> }
-);
+export type ISearchPlantQuery = { __typename?: 'Query', plantCollection?: { __typename?: 'PlantCollection', total: number, skip: number, limit: number, items: Array<{ __typename?: 'Plant', slug?: string | null | undefined, plantName?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, image?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined, description?: { __typename?: 'PlantDescription', json: any } | null | undefined, author?: { __typename?: 'Author', fullName?: string | null | undefined, handle?: string | null | undefined, biography?: string | null | undefined, twitter?: string | null | undefined, linkedIn?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, photo?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined } | null | undefined, category?: { __typename?: 'Category', slug?: string | null | undefined, title?: string | null | undefined, categoryDescription?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, icon?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined } | null | undefined } | null | undefined> } | null | undefined };
 
 export type IGetCategoryListQueryVariables = Exact<{
   limit?: Maybe<Scalars['Int']>;
@@ -1089,16 +1013,7 @@ export type IGetCategoryListQueryVariables = Exact<{
 }>;
 
 
-export type IGetCategoryListQuery = (
-  { __typename?: 'Query' }
-  & { categoryCollection?: Maybe<(
-    { __typename?: 'CategoryCollection' }
-    & { items: Array<Maybe<(
-      { __typename?: 'Category' }
-      & ICategoryFieldsFragment
-    )>> }
-  )> }
-);
+export type IGetCategoryListQuery = { __typename?: 'Query', categoryCollection?: { __typename?: 'CategoryCollection', items: Array<{ __typename?: 'Category', slug?: string | null | undefined, title?: string | null | undefined, categoryDescription?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, icon?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined } | null | undefined> } | null | undefined };
 
 export type IGetAuthorListQueryVariables = Exact<{
   limit?: Maybe<Scalars['Int']>;
@@ -1107,16 +1022,7 @@ export type IGetAuthorListQueryVariables = Exact<{
 }>;
 
 
-export type IGetAuthorListQuery = (
-  { __typename?: 'Query' }
-  & { authorCollection?: Maybe<(
-    { __typename?: 'AuthorCollection' }
-    & { items: Array<Maybe<(
-      { __typename?: 'Author' }
-      & IAuthorFieldsFragment
-    )>> }
-  )> }
-);
+export type IGetAuthorListQuery = { __typename?: 'Query', authorCollection?: { __typename?: 'AuthorCollection', items: Array<{ __typename?: 'Author', fullName?: string | null | undefined, handle?: string | null | undefined, biography?: string | null | undefined, twitter?: string | null | undefined, linkedIn?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, photo?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined } | null | undefined> } | null | undefined };
 
 export type IGetPlantListByAuthorQueryVariables = Exact<{
   authorId: Scalars['String'];
@@ -1124,16 +1030,7 @@ export type IGetPlantListByAuthorQueryVariables = Exact<{
 }>;
 
 
-export type IGetPlantListByAuthorQuery = (
-  { __typename?: 'Query' }
-  & { plantCollection?: Maybe<(
-    { __typename?: 'PlantCollection' }
-    & { items: Array<Maybe<(
-      { __typename?: 'Plant' }
-      & IPlantFieldsFragment
-    )>> }
-  )> }
-);
+export type IGetPlantListByAuthorQuery = { __typename?: 'Query', plantCollection?: { __typename?: 'PlantCollection', items: Array<{ __typename?: 'Plant', slug?: string | null | undefined, plantName?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, image?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined, description?: { __typename?: 'PlantDescription', json: any } | null | undefined, author?: { __typename?: 'Author', fullName?: string | null | undefined, handle?: string | null | undefined, biography?: string | null | undefined, twitter?: string | null | undefined, linkedIn?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, photo?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined } | null | undefined, category?: { __typename?: 'Category', slug?: string | null | undefined, title?: string | null | undefined, categoryDescription?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, icon?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined } | null | undefined } | null | undefined> } | null | undefined };
 
 export type IGetPlantListByCategoryQueryVariables = Exact<{
   category: Scalars['String'];
@@ -1142,22 +1039,7 @@ export type IGetPlantListByCategoryQueryVariables = Exact<{
 }>;
 
 
-export type IGetPlantListByCategoryQuery = (
-  { __typename?: 'Query' }
-  & { categoryCollection?: Maybe<(
-    { __typename?: 'CategoryCollection' }
-    & { items: Array<Maybe<(
-      { __typename?: 'Category' }
-      & ICategoryFieldsFragment
-    )>> }
-  )>, plantCollection?: Maybe<(
-    { __typename?: 'PlantCollection' }
-    & { items: Array<Maybe<(
-      { __typename?: 'Plant' }
-      & IPlantFieldsFragment
-    )>> }
-  )> }
-);
+export type IGetPlantListByCategoryQuery = { __typename?: 'Query', categoryCollection?: { __typename?: 'CategoryCollection', items: Array<{ __typename?: 'Category', slug?: string | null | undefined, title?: string | null | undefined, categoryDescription?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, icon?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined } | null | undefined> } | null | undefined, plantCollection?: { __typename?: 'PlantCollection', items: Array<{ __typename?: 'Plant', slug?: string | null | undefined, plantName?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, image?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined, description?: { __typename?: 'PlantDescription', json: any } | null | undefined, author?: { __typename?: 'Author', fullName?: string | null | undefined, handle?: string | null | undefined, biography?: string | null | undefined, twitter?: string | null | undefined, linkedIn?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, photo?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined } | null | undefined, category?: { __typename?: 'Category', slug?: string | null | undefined, title?: string | null | undefined, categoryDescription?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, icon?: { __typename?: 'Asset', title?: string | null | undefined, url?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined } | null | undefined } | null | undefined> } | null | undefined };
 
 export const AssetFieldsFragmentDoc = gql`
     fragment AssetFields on Asset {

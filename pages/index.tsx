@@ -1,4 +1,4 @@
-import { GetStaticProps, InferGetServerSidePropsType } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import { Layout } from '@components/Layout'
 import { Hero } from '@components/Hero'
 import { Authors } from '@components/Authors'
@@ -16,9 +16,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   }
 }
 
-export default function Home({
-  plants,
-}: InferGetServerSidePropsType<typeof getStaticProps>) {
+const Home: NextPage<HomeProps> = ({ plants }) => {
   return (
     <Layout>
       <Hero {...plants[0]} className="mb-20" />
@@ -35,3 +33,5 @@ export default function Home({
     </Layout>
   )
 }
+
+export default Home

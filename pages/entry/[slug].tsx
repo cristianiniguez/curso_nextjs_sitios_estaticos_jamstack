@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { GetStaticProps, InferGetServerSidePropsType } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { getPlant, getPlantList, getCategoryList } from '@api'
 
@@ -12,6 +12,7 @@ import { Grid } from '@ui/Grid'
 import { RichText } from '@components/RichText'
 import { AuthorCard } from '@components/AuthorCard'
 import { PlantEntryInline } from '@components/PlantCollection'
+import Image from '@components/Image'
 
 type PlantEntryPageProps = {
   plant: Plant
@@ -65,11 +66,11 @@ export const getStaticProps: GetStaticProps<PlantEntryPageProps> = async ({
   }
 }
 
-export default function PlantEntryPage({
+const PlantEntryPage: NextPage<PlantEntryPageProps> = ({
   plant,
   otherEntries,
   categories,
-}: InferGetServerSidePropsType<typeof getStaticProps>) {
+}) => {
   const router = useRouter()
 
   if (router.isFallback) {
@@ -81,7 +82,13 @@ export default function PlantEntryPage({
       <Grid container spacing={4}>
         <Grid item xs={12} md={8} component="article">
           <figure>
-            <img width={952} src={plant.image.url} alt={plant.image.title} />
+            <Image
+              width={952}
+              src={plant.image.url}
+              alt={plant.image.title}
+              layout="intrinsic"
+              aspectRatio="16:9"
+            />
           </figure>
           <div className="px-12 pt-8">
             <Typography variant="h2">{plant.plantName}</Typography>
@@ -125,3 +132,5 @@ export default function PlantEntryPage({
     </Layout>
   )
 }
+
+export default PlantEntryPage

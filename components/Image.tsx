@@ -1,12 +1,19 @@
-import { FC } from 'react'
-import NextImage, { ImageLoader } from 'next/image'
+import { FC, useCallback } from 'react'
+import NextImage, {
+  ImageLoader,
+  ImageProps as NextImageProps,
+} from 'next/image'
 
-type AspectRatio = '1:1' | '4:3' | '16:9'
+type AspectRatio = '1:1' | '4:3' | '16:9' | '3:2' | '9:12'
+type ImageLayout = 'fill' | 'fixed' | 'intrinsic' | 'responsive' | undefined
+type ImageFit = 'pad' | 'fill' | 'crop' | 'scale' | 'thumb'
 
 const aspectRatioToRatio: { [key in AspectRatio]: number } = {
   '1:1': 1,
   '4:3': 3 / 4,
   '16:9': 9 / 16,
+  '3:2': 2 / 3,
+  '9:12': 12 / 9,
 }
 
 function calcAspectRatio(aspectRatio: AspectRatio, width: number): number {
@@ -15,29 +22,37 @@ function calcAspectRatio(aspectRatio: AspectRatio, width: number): number {
 }
 
 type ImageProps = {
-  layout: 'fill' | 'fixed' | 'intrinsic' | 'responsive' | undefined
-  src: string
   width: number
   height?: never
+  layout: ImageLayout
   aspectRatio: AspectRatio
-  fit?: 'pad' | 'fill' | 'crop' | 'scale'
-}
+  fit?: ImageFit
+  src: string
+} & Omit<NextImageProps, 'height'>
 
 const Image: FC<ImageProps> = ({
-  layout,
-  src,
   width,
+  fit = 'fill',
   aspectRatio,
-  fit = 'scale',
+  ...nextImageProps
 }) => {
   const height = calcAspectRatio(aspectRatio, width)
 
-  const loader: ImageLoader = (args) => {
-    const loaderHeight = calcAspectRatio(aspectRatio, args.width)
-    return `${args.src}?w=${width}&h=${loaderHeight}&fit=${fit}`
-  }
+  const imageLoader = useCallback<ImageLoader>(
+    (loaderArgs) => {
+      const h = calcAspectRatio(aspectRatio, loaderArgs.width)
+      return `${loaderArgs.src}?w=${loaderArgs.width}&h=${h}&fit=${fit}`
+    },
+    [aspectRatio, fit]
+  )
 
-  return <NextImage {...{ layout, src, width, height, loader }} unoptimized />
+  return (
+    <NextImage
+      {...nextImageProps}
+      {...{ width, height }}
+      loader={imageLoader}
+    />
+  )
 }
 
 export default Image

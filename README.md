@@ -7,4 +7,5 @@ Proyecto del [Curso de Next.js: Optimización y Deploy a Producción](https://pl
 </p>
 
 Ver página: https://criniguez-platzi-plantpedia.vercel.app
+
 Mis apuntes: https://cristianiniguez.notion.site/Curso-de-Next-js-Optimizaci-n-y-Deploy-a-Producci-n-6333045777664b60a99a79580e2ba113

@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { GetStaticProps, NextPage } from 'next'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { getPlant, getPlantList, getCategoryList } from '@api'
 
@@ -24,18 +24,24 @@ type PathType = {
   params: {
     slug: string
   }
+  locale: string
 }
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
+  if (locales === undefined) {
+    throw new Error(
+      'Uh, did you forget to configure locales in your Next.js config?'
+    )
+  }
   const slugs = fs
     .readFileSync(path.join(process.cwd(), 'paths.txt'), 'utf-8')
     .toString()
     .split('\n')
     .filter(Boolean)
 
-  const paths: PathType[] = slugs.map((slug) => ({
-    params: { slug },
-  }))
+  const paths: PathType[] = slugs
+    .map((slug) => ({ params: { slug } }))
+    .flatMap((path) => locales.map((locale) => ({ locale, ...path })))
 
   return {
     paths,
@@ -46,6 +52,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<PlantEntryPageProps> = async ({
   params,
   preview,
+  locale,
 }) => {
   const slug = params?.slug
 
@@ -54,7 +61,7 @@ export const getStaticProps: GetStaticProps<PlantEntryPageProps> = async ({
   }
 
   try {
-    const plant = await getPlant(slug, preview)
+    const plant = await getPlant(slug, preview, locale)
     const otherEntries = await getPlantList({ limit: 5 })
     const categories = await getCategoryList({ limit: 10 })
 

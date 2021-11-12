@@ -1,4 +1,6 @@
-import { NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
+import { useTranslation } from 'react-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Layout } from '@components/Layout'
 import { Typography } from '@ui/Typography'
@@ -12,7 +14,13 @@ type ErrorPageProps = {
   message?: string
 }
 
+export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+  props: await serverSideTranslations(locale!),
+})
+
 const ErrorPage: NextPage<ErrorPageProps> = ({ statusCode, message }) => {
+  const { t } = useTranslation(['page-errors'])
+
   if (statusCode === 404) {
     return <NotFound />
   }
@@ -22,10 +30,7 @@ const ErrorPage: NextPage<ErrorPageProps> = ({ statusCode, message }) => {
   }
 
   const errorMessage =
-    message ||
-    (statusCode
-      ? 'An error occured on the server'
-      : 'An error occured on the client')
+    message || (statusCode ? t('serverError') : t('clientError'))
 
   return (
     <Layout>
@@ -49,7 +54,7 @@ const ErrorPage: NextPage<ErrorPageProps> = ({ statusCode, message }) => {
           href="/"
           title="Go back home"
         >
-          Go back home
+          {t('goHome')}
         </Button>
       </div>
     </Layout>

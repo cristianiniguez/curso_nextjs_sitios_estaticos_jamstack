@@ -2,9 +2,10 @@ import fs from 'fs'
 import path from 'path'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
-import { getPlant, getPlantList, getCategoryList } from '@api'
-
 import Link from 'next/link'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
+import { getPlant, getPlantList, getCategoryList } from '@api'
 import { Layout } from '@components/Layout'
 import { Typography } from '@ui/Typography'
 import { Grid } from '@ui/Grid'
@@ -13,6 +14,7 @@ import { RichText } from '@components/RichText'
 import { AuthorCard } from '@components/AuthorCard'
 import { PlantEntryInline } from '@components/PlantCollection'
 import Image from '@components/Image'
+import { useTranslation } from 'react-i18next'
 
 type PlantEntryPageProps = {
   plant: Plant
@@ -61,12 +63,13 @@ export const getStaticProps: GetStaticProps<PlantEntryPageProps> = async ({
   }
 
   try {
+    const i18nConfig = await serverSideTranslations(locale!)
     const plant = await getPlant(slug, preview, locale)
     const otherEntries = await getPlantList({ limit: 5 })
     const categories = await getCategoryList({ limit: 10 })
 
     return {
-      props: { plant, otherEntries, categories },
+      props: { plant, otherEntries, categories, ...i18nConfig },
       revalidate: 5 * 60,
     }
   } catch (error) {
@@ -80,6 +83,7 @@ const PlantEntryPage: NextPage<PlantEntryPageProps> = ({
   categories,
 }) => {
   const router = useRouter()
+  const { t } = useTranslation(['page-plant-entry'])
 
   if (router.isFallback) {
     return <Layout>Loading ...</Layout>
@@ -108,7 +112,7 @@ const PlantEntryPage: NextPage<PlantEntryPageProps> = ({
         <Grid item xs={12} md={4} component="aside">
           <section>
             <Typography variant="h5" component="h3" className="mb-4">
-              Recent Posts
+              {t('recentPosts')}
             </Typography>
             {otherEntries.map((plantEntry) => (
               <article className="mb-4" key={plantEntry.id}>
@@ -118,7 +122,7 @@ const PlantEntryPage: NextPage<PlantEntryPageProps> = ({
           </section>
           <section className="mt-10">
             <Typography variant="h5" component="h3" className="mb-4">
-              Categories
+              {t('categories')}
             </Typography>
             <ul className="list">
               {categories.map((category) => (

@@ -1,0 +1,9 @@
+{
+  "wearesorry": "Lo sentimos",
+  "notFoundErrorMessage": "No pudimos encontrar lo que estabas buscando.",
+  "goHome": "Volver al inicio",
+  "somethingWentWrong": "Algo salió mal",
+  "errorMessage": "No eres tú, somos nosotros. Por favor intente nuevamente en unos minutos.",
+  "serverError": "Un error ocurrió en el servidor",
+  "clientError": "Un error ocurrió en el cliente"
+}

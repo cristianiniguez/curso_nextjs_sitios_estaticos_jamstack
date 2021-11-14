@@ -1,7 +1,8 @@
-import { useState, useEffect, ChangeEventHandler } from 'react'
+import { useState, useEffect, useCallback, ChangeEventHandler } from 'react'
 import { GetStaticProps } from 'next'
 import { useTranslation } from 'react-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import debounce from 'lodash/debounce'
 
 import { QueryStatus, searchPlants } from '@api'
 import { Layout } from '@components/Layout'
@@ -25,7 +26,15 @@ const Search = () => {
   const [status, setStatus] = useState<QueryStatus>('idle')
   const [results, setResults] = useState<Plant[]>([])
 
-  const searchTerm = useDebounce(term, 500)
+  const debouncedSearchPlants = useCallback(
+    debounce((term: string) => {
+      searchPlants({ term, limit: 10 }).then((data) => {
+        setResults(data)
+        setStatus('success')
+      })
+    }, 500),
+    []
+  )
 
   const updateTerm: ChangeEventHandler<HTMLInputElement> = (e) =>
     setTerm(e.currentTarget.value)
@@ -33,7 +42,7 @@ const Search = () => {
   const emptyResults = status === 'success' && results.length === 0
 
   useEffect(() => {
-    if (searchTerm.trim().length < 3) {
+    if (term.trim().length < 3) {
       setStatus('idle')
       setResults([])
       return
@@ -42,11 +51,8 @@ const Search = () => {
     setStatus('loading')
 
     // Pagination not supported ... yet
-    searchPlants({ term: searchTerm, limit: 10 }).then((data) => {
-      setResults(data)
-      setStatus('success')
-    })
-  }, [searchTerm])
+    debouncedSearchPlants(term)
+  }, [term])
 
   return (
     <Layout>
@@ -77,22 +83,6 @@ const Search = () => {
       </main>
     </Layout>
   )
-}
-
-function useDebounce<T>(value: T, wait = 0): T {
-  const [debouncedValue, setDebouncedValue] = useState(value)
-
-  useEffect(() => {
-    const timeoutId = window.setTimeout(() => {
-      setDebouncedValue(value)
-    }, wait)
-
-    return () => {
-      window.clearTimeout(timeoutId)
-    }
-  }, [value])
-
-  return debouncedValue
 }
 
 export default Search

@@ -1,9 +1,9 @@
-# Curso de Next.js: Internacionalización de Aplicaciones Web con i18n
+# Curso de Next.js: Manejo de Grandes Datasets
 
-Proyecto del [Curso de Next.js: Internacionalización de Aplicaciones Web con i18n](https://platzi.com/clases/nextjs-internacionalizacion/) de Platzi
+Proyecto del [Curso de Next.js: Manejo de Grandes Datasets](https://platzi.com/clases/nextjs-grandes-datasets/) de Platzi
 
 <p align=center>
-  <img src="https://static.platzi.com/media/achievements/badge-nextjs-internacionalizacion-de6e10b1-0a08-4d47-98eb-54e4177f4925.png" alt="badge del curso de next.js: internacionalizacion con i18n de platzi" width="100">
+  <img src="https://static.platzi.com/media/achievements/next-defe9ba8-b678-4934-a898-7be2188cdbac.png" alt="badge del curso de next.js: manejo de grande datasets de platzi" width="100">
 </p>
 
-Mis apuntes: https://cristianiniguez.notion.site/Curso-de-Next-js-Internacionalizaci-n-de-Aplicaciones-Web-con-i18n-418d3d5917da488fa1d80159885f7f3c
+Mis apuntes: https://cristianiniguez.notion.site/Curso-de-Next-js-Manejo-de-Grandes-Datasets-ed0b83c583da482dbbd03c9d52f8b1f2

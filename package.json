@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@apollo/client": "^3.4.16",
-    "@contentful/rich-text-plain-text-renderer": "^15.5.1",
+    "@contentful/rich-text-plain-text-renderer": "^15.10.1",
     "@contentful/rich-text-react-renderer": "^15.5.1",
     "@graphql-codegen/cli": "^2.2.1",
     "@graphql-codegen/typescript": "^2.2.4",

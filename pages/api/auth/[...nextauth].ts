@@ -3,6 +3,7 @@ import type { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
 const options: NextAuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   theme: { colorScheme: 'light' },
   debug: true,
   session: {},
@@ -18,7 +19,7 @@ const options: NextAuthOptions = {
       },
       authorize: async (credentials) => {
         const response = await fetch(
-          `${process.env.NEXT_AUTH_URL}/api/auth/platzi`,
+          `${process.env.NEXTAUTH_URL}/api/auth/platzi`,
           {
             method: 'POST',
             body: JSON.stringify(credentials),

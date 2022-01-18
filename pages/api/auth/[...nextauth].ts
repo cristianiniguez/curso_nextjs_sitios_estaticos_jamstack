@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth'
 import type { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
+import GitHubCredentials from 'next-auth/providers/github'
 
 const options: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
@@ -33,6 +34,10 @@ const options: NextAuthOptions = {
 
         return null
       },
+    }),
+    GitHubCredentials({
+      clientId: process.env.AUTH_GITHUB_ID,
+      clientSecret: process.env.AUTH_GITHUB_SECRET,
     }),
   ],
 }

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { signIn, signOut, useSession } from 'next-auth/react'
+import { signIn, signOut, useSession } from '@auth/client'
 import { useTranslation } from 'next-i18next'
 
 import { Grid } from '@ui/Grid'

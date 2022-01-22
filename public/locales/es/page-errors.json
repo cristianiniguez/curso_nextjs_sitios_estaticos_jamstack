@@ -5,5 +5,8 @@
   "somethingWentWrong": "Algo salió mal",
   "errorMessage": "No eres tú, somos nosotros. Por favor intente nuevamente en unos minutos.",
   "serverError": "Un error ocurrió en el servidor",
-  "clientError": "Un error ocurrió en el cliente"
+  "clientError": "Un error ocurrió en el cliente",
+  "accessDenied": "Acceso denegado",
+  "weAreSorryYouCantAccess": "Lo sentimos, debes iniciar sesión primero para acceder a esta página",
+  "signIn": "Iniciar sesión"
 }

@@ -7,7 +7,10 @@ const options: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   theme: { colorScheme: 'light' },
   debug: true,
-  session: {},
+  session: {
+    maxAge: 60 * 15,
+    strategy: 'jwt',
+  },
   jwt: {},
   providers: [
     CredentialsProvider({
